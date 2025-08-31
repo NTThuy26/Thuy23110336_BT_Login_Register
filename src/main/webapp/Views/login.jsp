@@ -14,7 +14,11 @@
         <c:if test="${alert != null}">
             <h4 class="alert alert-danger text-center">${alert}</h4>
         </c:if>
-
+        <% String successMsg = (String) session.getAttribute("success");
+	   if(successMsg != null) { %>
+	   <div class="alert alert-success"><%= successMsg %></div>
+	   <% session.removeAttribute("success"); } %>
+        
         <!-- Form đăng nhập -->
         <form action="login" method="post">
             <div class="form-group">
@@ -36,8 +40,8 @@
             <button type="submit" class="btn btn-primary btn-block">Đăng nhập</button>
             <br>
             <p class="text-center">
-                Chưa có tài khoản? <a href="register.jsp">Đăng ký ngay</a>
-            </p>
+    			Chưa có tài khoản? <a href="Views/register.jsp">Đăng ký ngay</a>
+			</p>
         </form>
     </div>
 </body>

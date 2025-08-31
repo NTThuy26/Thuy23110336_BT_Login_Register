@@ -10,10 +10,18 @@ public class User implements Serializable{
 	private String userName;
 	private String fullName;
 	private String passWord;
-	private String avatar;
 	private int roleid;
 	private String phone;
 	private Date createdDate;
+	
+	public User() {}
+
+    public User(String email, String userName, String passWord, String phone) {
+        this.email = email;
+        this.userName = userName;
+        this.passWord = passWord;
+        this.phone = phone;
+    }
 	
 	public int getId() {
 		return id;
@@ -44,12 +52,6 @@ public class User implements Serializable{
 	}
 	public void setPassWord(String passWord) {
 		this.passWord = passWord;
-	}
-	public String getAvatar() {
-		return avatar;
-	}
-	public void setAvatar(String avatar) {
-		this.avatar = avatar;
 	}
 	public int getRoleid() {
 		return roleid;
