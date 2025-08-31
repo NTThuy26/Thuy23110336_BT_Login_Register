@@ -17,7 +17,7 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public User get(String username) {
 	    try {
-	        return userDao.get(username);  // sửa ở đây
+	        return userDao.get(username); 
 	    } catch (Exception e) {
 	        e.printStackTrace();
 	    }
@@ -59,6 +59,11 @@ public class UserServiceImpl implements UserService{
     @Override
     public boolean checkExistPhone(String phone) {
         return userDao.checkExistPhone(phone);
+    }
+
+    @Override
+    public User getByEmail(String email) {
+        return userDao.getByEmail(email);
     }
 
 }

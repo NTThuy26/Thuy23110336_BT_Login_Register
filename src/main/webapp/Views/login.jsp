@@ -40,7 +40,8 @@
             <button type="submit" class="btn btn-primary btn-block">Đăng nhập</button>
             <br>
             <p class="text-center">
-    			Chưa có tài khoản? <a href="Views/register.jsp">Đăng ký ngay</a>
+			    <a href="forgot-password">Quên mật khẩu?</a> |
+			    Chưa có tài khoản? <a href="register">Đăng ký ngay</a>
 			</p>
         </form>
     </div>

@@ -12,21 +12,21 @@ public class UserDaoImpl implements UserDAO{
 	public ResultSet rs = null;
 	
 	public User get(String username) {
-	String sql = "SELECT * FROM [User] WHERE username = ? ";
-	try {
-	conn = new DBConnection().getConnection();
-	ps = conn.prepareStatement(sql);
-	ps.setString(1, username);
-	rs = ps.executeQuery();
-	while (rs.next()) {
-	User user = new User();
-	user.setId(rs.getInt("id"));
-	user.setUserName(rs.getString("username"));
-	user.setEmail(rs.getString("email"));
-	user.setPassWord(rs.getString("password"));
-	return user; }
-	} catch (Exception e) {e.printStackTrace(); }
-	return null;
+		String sql = "SELECT * FROM [User] WHERE username = ? ";
+		try {
+		conn = new DBConnection().getConnection();
+		ps = conn.prepareStatement(sql);
+		ps.setString(1, username);
+		rs = ps.executeQuery();
+		while (rs.next()) {
+		User user = new User();
+		user.setId(rs.getInt("id"));
+		user.setUserName(rs.getString("username"));
+		user.setEmail(rs.getString("email"));
+		user.setPassWord(rs.getString("password"));
+		return user; }
+		} catch (Exception e) {e.printStackTrace(); }
+		return null;
 	}
 	public User login(String username, String password) {
 	    String sql = "SELECT * FROM [User] WHERE username = ? AND password = ?";
@@ -50,6 +50,28 @@ public class UserDaoImpl implements UserDAO{
 	    return null;
 	}
 	
+	public User getByEmail(String email) {
+	    String sql = "SELECT * FROM [User] WHERE email = ?";
+	    try {
+	        conn = new DBConnection().getConnection();
+	        ps = conn.prepareStatement(sql);
+	        ps.setString(1, email);
+	        rs = ps.executeQuery();
+	        if (rs.next()) {
+	            User user = new User();
+	            user.setId(rs.getInt("id"));
+	            user.setUserName(rs.getString("username"));
+	            user.setEmail(rs.getString("email"));
+	            user.setPassWord(rs.getString("password"));
+	            user.setPhone(rs.getString("phone"));
+	            return user;
+	        }
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+	    return null;
+	}
+
 	@Override
     public void insert(User user) {
         String sql = "INSERT INTO [User](email, username, password, phone) VALUES (?,?,?,?)";
